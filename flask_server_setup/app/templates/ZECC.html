@@ -1,0 +1,1424 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Zero Energy Cooling Chamber</title>
+   
+<style>
+  /* -------------------------BODY------------------------- */
+
+  body {
+      margin: 0;
+      background: #fff;
+      font-family: 'Arial', sans-serif;
+      font-weight: 400;
+  }
+
+
+  /* ------------------------- HEADER -------------------------*/
+
+    
+  header {
+    background: #262626;
+    height: 80px;
+    /* display: flex; */
+    /* align-items: center; */
+  }
+  
+  header::after {
+    content: '';
+    display: table;
+    clear:both;
+  }
+  
+  .logo {
+    padding:10px;
+    float:left;
+    width:300px;
+  }
+
+  .sq-logo {
+    padding: 10px;
+    float:left;
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+  }
+  
+  nav {
+    float: right;
+    padding-right: 16px;
+  }
+  
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style:none;
+    /* position: relative; */
+  }
+  
+  nav li {
+    /* display: inline-block; */
+    margin: right 3.56vw;
+    margin: 0 2.28vw;
+    /* padding-top: 2.21vw; */
+    position: relative;
+    float: left;
+    height: 80px;
+    display: flex;
+    align-items: center;
+  }
+  
+  nav a {
+    color: rgb(255, 251, 251);
+    /* float: left; */
+    text-decoration: none;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  nav a:hover {
+      color: #31A6FF;
+  }
+  
+  nav a::before {
+      content: '';
+      display: block;
+      height:5px;
+      background-color: #31A6FF;
+  
+      position:absolute;
+      width: 0%;
+      top: 0;
+      transition: all ease-in-out 250ms;
+  }
+  
+  nav a:hover::before {
+      width: 100%;
+  }
+  
+  .header-text {
+      font-size: 16px;
+  }
+
+  @media all and (max-width: 608px) {
+    header {
+      height: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav {
+      float: none;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      padding: 0;
+    }
+  }
+  
+  .dropdown {
+    float:left;
+    overflow:hidden;
+  }
+  
+  .dropdown .dropbtn {
+    padding: 0;
+    font-size: 16px;
+    background-color: transparent;
+    color: rgb(255, 251, 251);
+    text-decoration: none;
+    border: none;
+    margin-top: -1.2px;
+  }
+  
+  .dropbtn::before {
+    content: '';
+    display: block;
+    height:5px;
+    background-color: #31A6FF;
+  
+    position:absolute;
+    width: 0%;
+    top: 0;
+    transition: all ease-in-out 250ms;
+  }
+  
+  .dropbtn:hover::before {
+    width: 100%
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: -20%;
+    width: 200%;
+    background-color: #5c5c5c;
+  
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    float: none;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: white;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover::before {
+    width:0;
+  }
+  
+  /* Show the dropdown menu on hover, change text color, apply hover bar above */
+  .dropdown:hover .dropdown-content {display: block;}
+  .dropdown:hover .dropbtn::before {width: 100%}
+  .dropdown:hover .dropbtn {color: #31A6FF}
+  li:hover .dropdown-content {display: block;}
+
+
+  /* -------------------------TABS------------------------- */
+
+  .flexwrap1 {
+    display: flex;
+    width: auto;
+    height: auto;
+    font-family: 'Arial', sans-serif;
+    color:#484848;
+    font-weight: 600;
+    font-size: 16px;
+    padding-left:5px;
+    padding-right:5px;
+    padding-bottom:10px;
+    background:#b2e3f4;
+    gap: 2.083vw;
+    line-height: 1.5;
+    margin: auto;
+    justify-content: center;
+  }
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+  }
+
+  /* -------------------------ROWS AND COLUMNS------------------------- */
+
+  .home_container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.75%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: stretch;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .column_1_home {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .column_2_home {
+    display: flex;
+    align-items: stretch;
+    align-items: first baseline;
+  }
+
+  .column_2_home img {
+    width: auto;
+    max-width: 700px;
+    height: 100%;
+    object-fit:cover;
+  }
+
+  .home_center_col {
+    width: 97%;
+    max-width: 1200px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+  }
+
+  .column_2 {
+    float: left;
+    width: 45.9%;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
+  .column_3 {
+    float: left;
+    text-align: left;
+    width: 29.3%;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
+  .column_3 p {
+    margin: 0;
+  
+  }
+
+  .column_3 math {
+  display: inline; /* Ensure inline display for MathML elements */
+  text-align: left; /* Ensure left alignment for MathML elements */
+}
+
+  .column_3 mi, .column_3 mo, .column_3 msub {
+    display: inline; /* Ensure inline display for MathML sub-elements */
+}
+
+  .column_4 {
+    float: left;
+    width: 20.9%;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Responsive layouts */
+
+  @media screen and (max-width: 1100px) {
+
+    .home_container {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .column_1_home, .column_2_home{
+      width: 100%;
+    }
+
+    .column_1_home {
+      order: 2;
+    }
+
+    .column_2_home {
+      order: 1;
+    }
+
+    .home_center_col {
+      max-width: 600px;
+      align-items: center;
+      justify-content: center;
+    }
+
+  }
+
+  @media screen and (max-width: 800px) {
+
+    .column_2 {
+      width: 96%;
+    }
+
+    .column_3 {
+      width: 96%;
+    }
+    
+    .column_4 {
+      width: 96%;
+    }
+
+    .row math{
+      overflow-x: auto; /* Change to auto to avoid empty scrollbars */
+      overflow-y: hidden;
+      max-width: 300px;
+    }
+
+  }
+
+  /*-------------------BOKEH SECTION--------------------- */
+  .scrollable-container {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+
+  /*-------------------FOOTER--------------------- */
+  .footer {
+    margin: 0;
+    padding: 10px 0 10px 0;
+    list-style:none;
+    text-decoration: none;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: #262626;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+  }
+
+  @media all and (max-width: 700px) {
+      .footer {
+        flex-direction: column;
+      }
+    }
+
+  .container2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    padding: 10px;
+  }
+
+
+  /* -------------------MISC------------------- */
+
+  .button1 {
+    margin: 0;
+    justify-self: center;
+    text-decoration: none;
+    color: black;
+    font-family: 'Arial', sans-serif;
+    font-weight: 200;
+    font-size: 28px;
+    text-align: center;
+    background-color: #fff;
+
+    border: solid 2px black;
+    border-radius: 50px;
+    padding: 0.651vw 5.208vw;
+
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 52.083vw;
+    height: 29.297vw;
+  }
+
+  .head1 {
+    text-align: center;
+    background-color: #fff;
+    color: #000;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+  }
+    
+    /*------------------SLIDES---------------------*/
+  .slide-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    margin: auto;
+    margin-top: 2.279vw;
+    max-width: 60rem;
+  }
+
+  .slide-iframe {
+    display: block;
+    width: 52.083vw;
+    height: 29.2969vw;
+  }
+
+</style>
+</head>
+    
+
+<body>
+  <header>
+    <div><a href="/app"><img src="{{url_for('static', filename='Logo2.JPG')}}" alt="logo" class="logo"></a></div>
+    <nav>
+        <li><a href="/app" class="header-text">HOME</a></li>
+        <li><div class="dropdown">
+            <button class="dropbtn">MODULES</button>
+            <div class="dropdown-content">
+              <a href="bayesian_optimization" class="header-text">Bayesian Optimization</a>
+              <a href="biodegradability_classification" class="header-text">Biodegradability Classification</a>
+              <a href="catalysis_data_interactive_visualization" class="header-text">Catalysis Data Science</a>
+              <a href="DLT" class="header-text">Digital Lab Twin</a>
+              <a href="DAC" class="header-text">Direct Air Captures</a>
+              <a href="sliders_reaction_kinetics" class="header-text">Reaction Kinetics</a>
+              <a href="SIR" class="header-text">SEIR Infectious Diseases</a>
+              <a href="ZECC" class="header-text">Zero Energy Cooling Chamber</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="about" class="header-text">ABOUT</a></li>
+    </nav>
+  </header>
+<style>
+        .text-size {
+            font-size: 16px; /* Adjust the font size as desired */
+        }
+    </style>
+        <h1 class="head1">Zero Energy Cooling Chamber</h1>
+        <div class="tab">
+            <button tabindex= "0" class="tablinks" onclick="openTab(event, 'About')" id="defaultOpen">About</button>
+            <button tabindex= "0" class="tablinks" onclick="openTab(event, 'Experiment')">Experiment</button>
+            <button tabindex= "0" class="tablinks" onclick="openTab(event, 'Equations')">Equations</button>
+            <button tabindex= "0" class="tablinks" onclick="openTab(event, 'Questions')">Questions</button>
+          </div>
+      
+          <div class="flexwrap1">
+            <div id="About" class="tabcontent">
+              <h3>Welcome to Zero Energy Cooling Chamber</h3>
+              <div class="home_container">
+                <div class="column_1_home">
+                  <p>Food waste is one of the leading causes of worldwide hunger. Agricultural output becomes unusable if there is little capacity to store food. “Much of the food being collected is either not consumed or never makes it to the market.” (NPR) Not only is the potential profit lost, but so are the lives of those suffering from food shortages.</p>
+                  <p>The Zero Energy Cool Chamber (ZECC) is an eco-friendly storage system developed to preserve food in a hot, arid climate, where access to electricity is sparse. It is often used by small-scale farmers to reduce postharvest loss in developing countries.</p>
+                  <p>The ZECC functions similar to a conventional refrigerator in the sense that the chamber 'pushes' heat out. However, it is cheaper and has a higher energy efficiency than your typical fridge. 
+                    It requires no electrical energy whatsoever, just water to maintain function.</p> 
+                </div>
+                
+    
+                <div class="column_2_home">
+                  <img src="{{url_for('static', filename='ZECC_1.png')}}" alt="ZECC" class="right" style="width:100%; height: auto;">
+                </div>
+              </div>
+
+              <div class="home_container">
+                <img src="{{url_for('static', filename='ZECC_5.png')}}" alt="ZECC diagram" class="center" style="width:100%; height: auto; grid-row:1; margin-top: 40px;">
+                <p style="grid-row:2;">The design consists of an inner chamber, a surrounding layer of wet sand, and another wall encasing it.
+                  The center storage space is made cool by the principle of passive evaporative cooling: 
+                  the liquid water molecules in the sand layer travel through the outer layer and evaporate due to the source of heat coming from the produce being stored, 
+                  as well as the humidity difference between the sand layer and the outer air. This cooling process is similar to sweating.</p> 
+              </div>
+
+              <div class="row" style="justify-items: center;display: grid;padding: 30px 0 0 0;">
+                <p><b>NOTE:</b> If the module below is not appearing, try opening this page in a private/incognito window.</p> 
+                <p><a href="#jump" class="button1">Jump to Module</a></p><br>
+              </div>
+    
+            </div>
+
+
+            <div id="Experiment" class="tabcontent">
+              <h3>Setting up the experiment</h3>
+              <div class="row">
+                <div class="column_3">
+                  <h3>Assumptions:</h3>
+                  <p>
+                    <ul>
+                      <li>One metric ton of potatoes is being stored in the center of the inner chamber</li>
+                      <li>Sand remains saturated throughout the process</li>
+                      <li>Potatoes respirate, giving off a source of heat that drives the heat and mass transfer out of the
+                        system</li>
+                      <li>Water travels from the wet sand out through the brick, evaporating off of the surface of the outer
+                        brick wall, creating a cooling effect at each layer of the chamber (similar to sweat evaporating off
+                        skin to cool you down)</li>
+                    </ul>
+                  </p>
+                  <img src="{{url_for('static', filename='ZECC_3.png')}}" alt="Our ZECC diagram" class="left" style="width:100%; height: auto;">
+                  
+                </div>
+
+                <div class="column_3">
+                  <h3>Independent Variables (User Input):</h3>
+                  <p>
+                    <ul>
+                      <li>Inner Chamber Temperature</li>
+                      <ul>
+                        <li>The desired inner temperature will dictate how much heat you need to be pushed out.</li> 
+                        <li>The inner temperature will also dictate how much fruit you could sell and how useful the ZECC could be.</li>
+                      </ul>
+                      <li>Outer Air Temperature</li>
+                      <ul>
+                        <li>The ambient temperature (based on location) will decide whether or not the ZECC can function properly, and for what times of the year.</li>
+                      </ul>
+                      <li>Outer Air Relative Humidity</li>
+                      <ul>
+                        <li>The humidity affects the evaporation rate, and whether or not the water will evaporate at all.</li> 
+                        <li>The humidity will decide whether or not the dewpoint temperature will cause condensation, and if the chamber can work.</li>
+                      </ul>
+                      <li>Size of Inner Chamber (length and width varied, fixed height)</li>
+                      <ul>
+                        <li>The dimensions will change how much heat is conducted to the water, how much food can be stored, and how much the initial cost will be.</li> 
+                        <li>The amount of food stored increases your profit, the operating budget.</li>
+                      </ul>
+                      <li>Size of Wet Sand Layer (thickness)</li>
+                    </ul>
+                  </p>
+                </div>
+
+                <div class="column_3">
+                  <h3>Dependent Variables (Calculated by the Model):</h3>
+                  <p>
+                    <ul>
+                      <li>Temperatures at each medium interface (HT)</li>
+                      <li>Dew Point Temperature at outer brick wall (HT)</li>
+                      <li>Diffusion of Water through the layers to the outer brick wall (MT)</li>
+                      <li>Evaporation of Water at outer brick surface (MT)</li>
+                      <li>Liters of Water needed to be added daily to replace lost water via MT</li>
+                      <li>Annual cost of design (both fixed and variable expenses)</li>
+                      <ul>
+                        <li>The choice of materials affects the initial cost of the ZECC and the amount of heat that can be pushed out through conduction.</li>
+                      </ul>
+                    </ul>
+                  </p>
+                  <p>With this given information, optimize the ZECC as much as possible and create a self sufficient system.</p>
+                </div>
+              </div>
+
+            </div>
+
+      
+ 
+            <div id="Equations" class="tabcontent">
+              <h3>Equations</h3>
+              <div class="row">
+                  <h3>General Balance:</h3>
+                  <p>
+                    <ul>
+                      <li>IN + GENERATION = OUT</li>
+                      <li>IN = water is added into the system to force heat transfer outward</li>
+                      <li>GENERATION = heat is generated by the potatoes in the center of the storage container</li>
+                      <li>OUT = heat conducted out, water evaporated out at brick surface</li>
+                    </ul>
+                  </p>
+              </div>
+
+              <div class="row">
+                  <h3>Heat Transfer:</h3>
+                  <p>
+                    <ul>
+                      <li>Composite wall heat balance to find temperatures at each interface</li>
+                    </ul>
+                  </p>
+                    <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                      <mi>q</mi>
+                      <mo>=</mo>
+                      <mfrac>
+                          <mrow>
+                            <mi>(</mi>
+                            <msub>
+                              <mi>T</mi>
+                              <mi>c</mi>
+                            </msub>
+                            <mo>&minus;</mo>
+                            <msub>
+                              <mi>T</mi>
+                              <mi>4</mi>
+                            </msub>
+                            <mi>)</mi>
+                          </mrow>
+                          <mrow>
+                              <mfrac>
+                                <mi>1</mi>
+                                <mrow>
+                                  <msub>
+                                    <mi>h</mi>
+                                    <mi>c</mi>
+                                  </msub>
+                                  <mo>&times</mo>
+                                  <msub>
+                                    <mi>A</mi>
+                                    <mi>c</mi>
+                                  </msub>
+                                </mrow>
+                              </mfrac>
+                          </mrow>
+                      </mfrac>
+                      <mo>=</mo>
+                      <mfrac>
+                          <mrow>
+                            <mi>(</mi>
+                            <msub>
+                              <mi>T</mi>
+                              <mi>4</mi>
+                            </msub>
+                            <mo>&minus;</mo>
+                            <msub>
+                              <mi>T</mi>
+                              <mi>3</mi>
+                            </msub>
+                            <mi>)</mi>
+                          </mrow>
+                          <mrow>
+                              <mfrac>
+                                <msub>
+                                  <mi>L</mi>
+                                  <mi>inner brick</mi>
+                                </msub>
+                                <mrow>
+                                  <msub>
+                                    <mi>k</mi>
+                                    <mi>brick</mi>
+                                  </msub>
+                                  <mo>&times</mo>
+                                  <msub>
+                                    <mi>A</mi>
+                                    <mi>inner brick</mi>
+                                  </msub>
+                                </mrow>
+                              </mfrac>
+                          </mrow>
+                      </mfrac>
+                      <mo>=</mo>
+                      <mfrac>
+                          <mrow>
+                            <mi>(</mi>
+                            <msub>
+                              <mi>T</mi>
+                              <mi>3</mi>
+                            </msub>
+                            <mo>&minus;</mo>
+                            <msub>
+                              <mi>T</mi>
+                              <mi>2</mi>
+                            </msub>
+                            <mi>)</mi>
+                          </mrow>
+                          <mrow>
+                              <mfrac>
+                                <msub>
+                                  <mi>L</mi>
+                                  <mi>wet sand</mi>
+                                </msub>
+                                <mrow>
+                                  <msub>
+                                    <mi>k</mi>
+                                    <mi>wet sand</mi>
+                                  </msub>
+                                  <mo>&times</mo>
+                                  <msub>
+                                    <mi>A</mi>
+                                    <mi>wet sand</mi>
+                                  </msub>
+                                </mrow>
+                              </mfrac>
+                          </mrow>
+                      </mfrac>
+                      <mo>=</mo>
+                      <mfrac>
+                          <mrow>
+                            <mi>(</mi>
+                            <msub>
+                              <mi>T</mi>
+                              <mi>2</mi>
+                            </msub>
+                            <mo>&minus;</mo>
+                            <msub>
+                              <mi>T</mi>
+                              <mi>1</mi>
+                            </msub>
+                            <mi>)</mi>
+                          </mrow>
+                          <mrow>
+                              <mfrac>
+                                <msub>
+                                  <mi>L</mi>
+                                  <mi>outer brick</mi>
+                                </msub>
+                                <mrow>
+                                  <msub>
+                                    <mi>k</mi>
+                                    <mi>brick</mi>
+                                  </msub>
+                                  <mo>&times</mo>
+                                  <msub>
+                                    <mi>A</mi>
+                                    <mi>outer brick</mi>
+                                  </msub>
+                                </mrow>
+                              </mfrac>
+                          </mrow>
+                      </mfrac>
+                      <mo>=</mo>
+                      <mfrac>
+                          <mrow>
+                            <mi>(</mi>
+                            <msub>
+                              <mi>T</mi>
+                              <mi>1</mi>
+                            </msub>
+                            <mo>&minus;</mo>
+                            <msub>
+                              <mi>T</mi>
+                              <mi>bulk</mi>
+                            </msub>
+                            <mi>)</mi>
+                          </mrow>
+                          <mrow>
+                              <mfrac>
+                                <mi>1</mi>
+                                <mrow>
+                                  <msub>
+                                    <mi>h</mi>
+                                    <mi>bulk</mi>
+                                  </msub>
+                                  <mo>&times</mo>
+                                  <msub>
+                                    <mi>A</mi>
+                                    <mi>bulk</mi>
+                                  </msub>
+                                </mrow>
+                              </mfrac>
+                          </mrow>
+                      </mfrac>
+                  </math></p>
+              </div>
+
+              <div class="row">
+                <div class="column_3">
+                  <p>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                      <mi>q</mi>
+                      <mo>=</mo>
+                      <mi>Heat produced by potato respiration</mi>
+                    </math>
+                  </p>
+                  <p>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                      <msub>
+                        <mi>h</mi>
+                        <mi>c</mi>
+                      </msub>
+                      <mo>=</mo>
+                      <mi>Heat transfer coefficient inside the chamber</mi>
+                    </math>
+                  </p>
+                  <p>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                      <msub>
+                        <mi>A</mi>
+                        <mi>c</mi>
+                      </msub>
+                      <mo>=</mo>
+                      <mi>Area of inner chamber</mi>
+                    </math>
+                  </p>
+                  <p>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                      <msub>
+                        <mi>L</mi>
+                        <mi>inner brick</mi>
+                      </msub>
+                      <mo>=</mo>
+                      <mi>Length of the inner brick layer</mi>
+                    </math>
+                  </p>
+                  <p>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                      <msub>
+                        <mi>k</mi>
+                        <mi>brick</mi>
+                      </msub>
+                      <mo>=</mo>
+                      <mi>Thermal conductivity of brick</mi>
+                    </math>
+                  </p>
+                  <p>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                      <msub>
+                        <mi>A</mi>
+                        <mi>bulk</mi>
+                      </msub>
+                      <mo>=</mo>
+                      <mi>Area outside of chamber</mi>
+                    </math>
+                  </p>
+                  <p>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                      <msub>
+                        <mi>h</mi>
+                        <mi>bulk</mi>
+                      </msub>
+                      <mo>=</mo>
+                      <mi>Heat transfer coefficient of outdoor air</mi>
+                    </math>
+                  </p>
+                </div>
+
+                <div class="column_3">
+                  <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <msub>
+                      <mi>A</mi>
+                      <mi>inner brick</mi>
+                    </msub>
+                    <mo>=</mo>
+                    <mi>Area of inner brick layer</mi>
+                  </math></p>
+                  <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">  
+                    <msub>
+                      <mi>L</mi>
+                      <mi>wet sand</mi>
+                    </msub>
+                    <mo>=</mo>
+                    <mi>Length of wet sand layer</mi>
+                  </math></p>
+                  <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">  
+                    <msub>
+                      <mi>k</mi>
+                      <mi>wet sand</mi>
+                    </msub>
+                    <mo>=</mo>
+                    <mi>Thermal conductivity of wet sand</mi>
+                  </math></p>
+                  <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">  
+                    <msub>
+                      <mi>A</mi>
+                      <mi>wet sand</mi>
+                    </msub>
+                    <mo>=</mo>
+                    <mi>Area of wet sand layer</mi>
+                  </math></p>
+                  <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">  
+                    <msub>
+                      <mi>L</mi>
+                      <mi>outer brick</mi>
+                    </msub>
+                    <mo>=</mo>
+                    <mi>Length of outer brick layer</mi>
+                  </math></p>
+                  <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">  
+                    <msub>
+                      <mi>A</mi>
+                      <mi>outer brick</mi>
+                    </msub>
+                    <mo>=</mo>
+                    <mi>Area of outer brick layer</mi>
+                  </math></p>
+                </div>
+
+                <div class="column_3">
+                  <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <msub>
+                      <mi>T</mi>
+                      <mi>c</mi>
+                    </msub>
+                    <mo>=</mo>
+                    <mi>Inner Chamber Temperature</mi>
+                  </math></p>
+                  <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">  
+                    <msub>
+                      <mi>T</mi>
+                      <mi>4</mi>
+                    </msub>
+                    <mo>=</mo>
+                    <mi>Inner Chamber/Inner Brick Interface Temperature</mi>
+                  </math></p>
+                  <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">  
+                    <msub>
+                      <mi>T</mi>
+                      <mi>3</mi>
+                    </msub>
+                    <mo>=</mo>
+                    <mi>Inner Brick/Wet Sand Interface Temperature</mi>
+                  </math></p>
+                  <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">  
+                    <msub>
+                      <mi>T</mi>
+                      <mi>2</mi>
+                    </msub>
+                    <mo>=</mo>
+                    <mi>Wet Sand/Outer Brick Interface Temperature</mi>
+                  </math></p>
+                  <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">  
+                    <msub>
+                      <mi>T</mi>
+                      <mi>1</mi>
+                    </msub>
+                    <mo>=</mo>
+                    <mi>Outer Brick/Bulk Air Interface Temperature</mi>
+                  </math></p>
+                  <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">  
+                    <msub>
+                      <mi>T</mi>
+                      <mi>bulk</mi>
+                    </msub>
+                    <mo>=</mo>
+                    <mi>Temperature of outdoor air</mi>
+                  </math></p>
+                </div>
+              </div>
+
+              <div class = "row">
+                    <ul>
+                      <li>Magnus Formula to find dew point temperature based on input value of bulk air temperature and
+                        relative humidity.</li>
+                    </ul>
+                  
+                    <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                      <msub>
+                        <mi>T</mi>
+                        <mi>dew point</mi>
+                      </msub>
+                      <mo>=</mo>
+                      <mfrac>
+                        <mrow>
+                          <mi>b</mi>
+                          <mo>&lbrack;</mo>
+                          <mfrac>
+                            <mrow>
+                              <mi>a</mi>
+                              <mo>&times</mo>
+                              <msub>
+                                <mi>T</mi>
+                                <mi>bulk</mi>
+                              </msub>
+                            </mrow>
+                            <mrow>
+                              <mi>b</mi>
+                              <mo>+</mo>
+                              <msub>
+                                <mi>T</mi>
+                                <mi>bulk</mi>
+                              </msub>
+                            </mrow>
+                          </mfrac>
+                          <mo>+</mo>
+                          <mi>ln(</mi>
+                          <mi>RH</mi>
+                          <mi>)</mi>
+                          <mo>&rbrack;</mo>
+                        </mrow>
+
+                        <mrow>
+                          <mi>a</mi>
+                          <mo>&minus;</mo>
+                          <mo>&lbrack;</mo>
+                          <mfrac>
+                            <mrow>
+                              <mi>a</mi>
+                              <mo>&times</mo>
+                              <msub>
+                                <mi>T</mi>
+                                <mi>bulk</mi>
+                              </msub>
+                            </mrow>
+                            <mrow>
+                              <mi>b</mi>
+                              <mo>+</mo>
+                              <msub>
+                                <mi>T</mi>
+                                <mi>bulk</mi>
+                              </msub>
+                            </mrow>
+                          </mfrac>
+                          <mo>+</mo>
+                          <mi>ln(</mi>
+                          <mi>RH</mi>
+                          <mi>)</mi>
+                          <mo>&rbrack;</mo>
+                        </mrow>
+                      </mfrac>
+                      <mi>, where</mi>
+                      <mo>‎</mo>
+                      <mi>a</mi>
+                      <mo>=</mo>
+                      <mi>17.27,</mi>
+                      <mo>‎</mo>
+                      <mi>b</mi>
+                      <mo>=</mo>
+                      <mi>237.7,</mi>
+                      <mo>‎</mo>
+                      <mi>RH</mi>
+                      <mo>=</mo>
+                      <mi>0</mi>
+                      <mo>&RightArrow;</mo>
+                      <mi>1</mi>
+                    </math></p>
+
+                    <ul>
+                      <li>Dew Point temperature is critically dependent on both the design of the chamber and inputted
+                        values. If the outer brick wall temperature becomes too low, water will begin to condense on the
+                        surface of the brick, and no evaporation will occur, halting the cooling of the inner chamber.</li>
+                    </ul></p>
+                      <p>The heat transfer that occurs in the zero energy cooling chamber is a combination of all three of the above heat transfer methods. 
+                        The radiation from solar energy heats the chamber and the surrounding area. The ground also radiates heat. 
+                        The fluid flow and the conduction of the water is what helps to cool the chamber down.
+                    </p>
+              </div>
+
+              <div class="row">
+                  <h3>Mass Transfer:</h3>
+                  <p>
+                    <ul>
+                      <li>Antoine equation to calculate pressure at a certain temperature</li>
+                    </ul></p>
+                    <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                      <mi>ln(</mi>
+                      <msup>
+                        <mi>P</mi>
+                        <mi>*</mi>
+                      </msup>
+                      <mi>)</mi>
+                      <mo>=</mo>
+                      <mi>A</mi>
+                      <mo>&minus;</mo>
+                      <mfrac>
+                        <mrow>
+                          <mi>B</mi>
+                        </mrow>
+                        <mrow>
+                          <mi>C</mi>
+                          <mo>+</mo>
+                          <mi>T</mi>
+                        </mrow>
+                      </mfrac>
+                      <mi>, where</mi>
+                      <mo>‎</mo>
+                      <mi>A</mi>
+                      <mo>=</mo>
+                      <mi>18.3036,</mi>
+                      <mo>‎</mo>
+                      <mi>B</mi>
+                      <mo>=</mo>
+                      <mi>3816.44,</mi>
+                      <mo>‎</mo>
+                      <mi>C</mi>
+                      <mo>=</mo>
+                      <mi>&minus;46.13</mi>
+                    </math></p>
+                    <p><ul>
+                      <li>Mass balance to calculate the outer mass transfer coefficient, <math xmlns="http://www.w3.org/1998/Math/MathML"> 
+                        <msub>
+                          <mi>k</mi>
+                          <mi>bulk</mi>
+                        </msub>
+                      </math> </li>
+                    </ul></p>
+                    <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                      <mi>q</mi>
+                      <mo>+</mo>
+                      <msub>
+                        <mi>h</mi>
+                        <mi>bulk</mi>
+                      </msub>
+                      <mo>&times;</mo>
+                      <msub>
+                        <mi>A</mi>
+                        <mi>outer brick</mi>
+                      </msub>
+                      <mo>&times;</mo>
+                      <mo>(</mo>
+                      <msub>
+                        <mi>T</mi>
+                        <mi>bulk</mi>
+                      </msub>
+                      <mo>&minus;</mo>
+                      <msub>
+                        <mi>T</mi>
+                        <mi>1</mi>
+                      </msub>
+                      <mo>)</mo>
+                      <mo>=</mo>
+                      <mi>&lambda;</mi>
+                      <mo>&times;</mo>
+                      <msub>
+                        <mi>k</mi>
+                        <mi>bulk</mi>
+                      </msub>
+                      <mo>&times;</mo>
+                      <msub>
+                        <mi>A</mi>
+                        <mi>bulk</mi>
+                      </msub>
+                      <mo>&lbrack;</mo>
+                      <msup>
+                        <mi>P</mi>
+                        <mi>*</mi>
+                      </msup>
+                      <mo>(</mo>
+                      <msub>
+                        <mi>T</mi>
+                        <mi>1</mi>
+                      </msub>
+                      <mo>)</mo>
+                      <mo>&minus;</mo>
+                      <msub>
+                        <mi>P</mi>
+                        <mi>bulk</mi>
+                      </msub>
+                      <mo>&rbrack;</mo>
+                      <mi>,</mi>
+                    </math></p>
+                    <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                      <mi>where</mi>
+                      <mo>‎</mo>
+                      <mi>&lambda;</mi>
+                      <mo>=</mo>
+                      <mi>latent heat of evaporation,</mi>
+                      <mo>‎</mo>
+                      <mi>q</mi>
+                      <mo>=</mo>
+                      <mi>heat of respiration</mi>
+                    </math></p>
+                    <p><ul>
+                      <li>Finding the concentration of water moving from the sand through the outer brick</li>
+                    </ul></p>
+                    <p><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                      <mfrac>
+                        <mrow>
+                          <msub>
+                            <mi>&epsi;</mi>
+                            <mi>brick</mi>
+                          </msub>
+                          <mo>&times;</mo>\
+                          <msub>
+                            <mi>D</mi>
+                            <mi>wb</mi>
+                          </msub>
+                          <mo>&times;</mo>
+                          <msub>
+                            <mi>A</mi>
+                            <mi>outer brick</mi>
+                          </msub>
+                          <mo>(</mo>
+                          <msub>
+                            <mi>C</mi>
+                            <mi>sand</mi>
+                          </msub>
+                          <mo>&times;</mo>
+                          <msub>
+                            <mi>C</mi>
+                            <mi>outer brick</mi>
+                          </msub>
+                          <mo>)</mo>
+                        </mrow>
+                        <mrow>
+                          <msub>
+                            <mi>L</mi>
+                            <mi>outer brick</mi>
+                          </msub>
+                        </mrow>
+                      </mfrac>
+                      <mo>=</mo>
+                      <msub>
+                        <mi>k</mi>
+                        <mi>bulk</mi>
+                      </msub>
+                      <mo>&times;</mo>
+                      <msub>
+                        <mi>A</mi>
+                        <mi>bulk</mi>
+                      </msub>
+                      <mo>&lbrack;</mo>
+                      <msup>
+                        <mi>P</mi>
+                        <mi>*</mi>
+                      </msup>
+                      <mo>(</mo>
+                      <msub>
+                        <mi>T</mi>
+                        <mi>1</mi>
+                      </msub>
+                      <mo>)</mo>
+                      <mo>&minus;</mo>
+                      <msub>
+                        <mi>P</mi>
+                        <mi>bulk</mi>
+                      </msub>
+                      <mo>&rbrack;</mo>
+                    </math></p>
+                    <p>When one mole of a substance at atmospheric pressure goes from the liquid phase to the gaseous phase, 
+                        there is energy required to bring the substance to a boil and make the phase change occur. 
+                        Bringing a substance to its boiling point is not enough since there is still energy required to make phase change occur. 
+                        This energy required is the latent heat of vaporization. Temperature changes cannot occur without phase changes.</p>
+              </div>
+            </div>
+
+            <div id="Questions" class="tabcontent">
+              <h3>Guiding Questions</h3>
+              <p>
+                <ol>
+                  <li>Consider the region and time of year this would be implemented. How does that change the
+                    outer air temperature and relative humidity values you will be inputting?</li>
+                  <li>What is a normal refrigerator temperature? Do potatoes need to be stored at this temperature?</li>
+                  <li>How much is one metric ton of potatoes in kg? What kind of space might that many potatoes
+                    occupy? Will this affect your initial guesses?</li>
+                  <li>How will changing each variable affect your overall design? Which is the most costly to
+                    manipulate and why?</li>
+                  <li>Is this design useful? Does it make sense to build a ZECC here at Lehigh, or would it be better
+                    suited elsewhere? Can this be used year-round?</li>
+                </ol>
+              </p>
+            </div>
+          </div>
+            
+          <h3 id="jump" style="margin:5px;"> </h3>
+
+          <script>
+            function openTab(evt, tabName) {
+              var i, tabcontent, tablinks;
+              tabcontent = document.getElementsByClassName("tabcontent");
+              for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+              }
+              tablinks = document.getElementsByClassName("tablinks");
+              for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+              }
+              document.getElementById(tabName).style.display = "block";
+              evt.currentTarget.className += " active";
+            }
+            // Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+// Keyboard navigation
+document.addEventListener('keydown', (event) => {
+    const tablinks = document.querySelectorAll('.tablinks');
+    let currentTab = Array.from(tablinks).findIndex((tab) => tab.classList.contains('active'));
+    
+    if (event.key === 'ArrowRight') {
+      currentTab = (currentTab + 1) % tablinks.length;
+    } else if (event.key === 'ArrowLeft') {
+      currentTab = (currentTab - 1 + tablinks.length) % tablinks.length;
+    } else {
+      return;
+    }
+    
+    tablinks[currentTab].click();
+  });
+          </script>
+    <div class="scrollable-container">
+      {{bokeh_script_ZECC|safe}}
+    </div>
+
+    <br>
+    <br>
+
+    <style>
+      /* floating round button */
+      #clutchChatIcon{
+        position:fixed;
+        bottom:20px;
+        right:20px;
+        width:60px;
+        height:60px;
+        border-radius:50%;
+        /* REMOVED background-image here, it's now handled by <img> tag inside */
+        background-color: transparent; /* Ensure no default background interferes */
+        cursor:pointer;
+        z-index:1000; /* Ensure it's above most page content */
+        box-shadow:0 4px 12px rgba(0,0,0,.3);
+        overflow: hidden; /* Hide parts of image that exceed round shape */
+        display: flex; /* Use flexbox to center image inside */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+      }
+    
+      /* Style for the actual image inside the button */
+      #clutchChatIcon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensure image covers the button area */
+      }
+    
+      /* hidden iframe */
+      #clutchIframe{
+        display:none; /* Initially hidden, toggled by JS */
+        position:fixed;
+        bottom:90px; /* Positions the iframe above the icon when expanded */
+        right:20px;
+        width:350px; /* Standard chat window width */
+        height:500px; /* Standard chat window height */
+        border:none;
+        border-radius:12px;
+        box-shadow:0 0 15px rgba(0,0,0,.25);
+        z-index:1001; /* Ensure the iframe is above the icon */
+      }
+    
+      /* Optional: Basic responsive adjustments for smaller screens */
+      @media (max-width: 600px) {
+        #clutchChatIcon {
+          bottom: 10px;
+          right: 10px;
+          width: 50px;
+          height: 50px;
+        }
+        #clutchIframe {
+          width: 90%;
+          height: 70%;
+          bottom: 70px;
+          right: 5%; /* Centers it horizontally */
+          left: 5%; /* Centers it horizontally */
+          margin: auto; /* Ensures centering */
+        }
+      }
+    </style>
+    
+    <div id="clutchChatIcon" onclick="toggleClutchChat()">
+      <img src="{{ url_for('static', filename='clutch-logo.jpeg') }}" alt="Clutch AI Chat"> </div>
+    
+    <iframe id="clutchIframe"
+            title="Clutch AI Chat"
+            src="https://omar852-clutch-ai-chat.hf.space"
+            allow="microphone">
+    </iframe>
+    
+    <script>
+      function toggleClutchChat(){
+        const frame = document.getElementById("clutchIframe");
+        if (frame.style.display === "none" || frame.style.display === "") {
+          frame.style.display = "block";
+        } else {
+          frame.style.display = "none";
+        }
+      }
+    </script>
+
+</body>
+
+<div class="footer">
+  <a href="https://cache.org/"><img src="{{url_for('static', filename='cache_logo.png')}}" alt="cache" class="sq-logo";></a>
+  <a href="https://www.nsf.gov/"><img src="{{url_for('static', filename='nsf_logo.png')}}" alt="nsf" class="sq-logo";></a>
+  <a href="/app"><img src="{{url_for('static', filename='Logo2.JPG')}}" alt="logo" class="logo";></a>
+  <a href="https://engineering.lehigh.edu/chbe"><img src="{{url_for('static', filename='chbe_logo.png')}}" alt="chbe" class="sq-logo";></a>
+  <a href="https://creativeinquiry.lehigh.edu/"><img src="{{url_for('static', filename='creative_inquiry_logo.png')}}" alt="ci" class="sq-logo";></a>
+</div>
+
+</html>

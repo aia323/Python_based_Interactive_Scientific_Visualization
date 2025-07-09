@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!--TITLE FOR BROWSER TAB-->
+    <title>STEM Visualizations</title>
+<style>
+
+
+  /* -------------------------BODY------------------------- */
+
+  body {
+      margin: 0;
+      background: #fff;
+      font-family: 'Arial', sans-serif;
+      font-weight: 400;
+  }
+
+  /* ------------------------- FOR THE HEADER -------------------------*/
+
+  header {
+      background: #262626;
+      height: 80px;
+      /* display: flex; */
+      /* align-items: center; */
+  }
+  
+  header::after {
+      content: '';
+      display: table;
+      clear:both;
+  }
+  
+  .logo {
+    padding:10px;
+    float:left;
+    width:300px;
+  }
+
+  .sq-logo {
+    padding: 10px;
+    float:left;
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+  }
+  
+  nav {
+    float: right;
+    padding-right: 16px;
+  }
+  
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style:none;
+    /* position: relative; */
+  }
+  
+  nav li {
+    /* display: inline-block; */
+    margin: right 3.56vw;
+    margin: 0 2.28vw;
+    /* padding-top: 2.21vw; */
+    position: relative;
+    float: left;
+    height: 80px;
+    display: flex;
+    align-items: center;
+  }
+  
+  nav a {
+    color: rgb(255, 251, 251);
+    /* float: left; */
+    text-decoration: none;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  nav a:hover {
+      color: #31A6FF;
+  }
+  
+  nav a::before {
+      content: '';
+      display: block;
+      height:5px;
+      background-color: #31A6FF;
+  
+      position:absolute;
+      width: 0%;
+      top: 0;
+      transition: all ease-in-out 250ms;
+  }
+  
+  nav a:hover::before {
+      width: 100%;
+  }
+  
+  .header-text {
+      font-size: 16px; /* Adjust the font size as desired */
+  }
+
+  @media all and (max-width: 608px) {
+    header {
+      height: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav {
+      float: none;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      padding: 0;
+    }
+  }
+  
+  .dropdown {
+    float:left;
+    overflow:hidden;
+  }
+  
+  /* Dropdown Button */
+  .dropdown .dropbtn {
+    padding: 0;
+    font-size: 16px;
+    background-color: transparent;
+    color: rgb(255, 251, 251);
+    text-decoration: none;
+    border: none;
+    margin-top: -1.2px;
+  }
+  
+  .dropbtn::before {
+    content: '';
+    display: block;
+    height:5px;
+    background-color: #31A6FF;
+  
+    position:absolute;
+    width: 0%;
+    top: 0;
+    transition: all ease-in-out 250ms;
+  }
+  
+  .dropbtn:hover::before {
+    width: 100%
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: -20%;
+    width: 200%;
+    background-color: #5c5c5c;
+  
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    float: none;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: white;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover::before {
+    width:0;
+  }
+  
+  /* Show the dropdown menu on hover, change text color, apply hover bar above */
+  .dropdown:hover .dropdown-content {display: block;}
+  .dropdown:hover .dropbtn::before {width: 100%}
+  .dropdown:hover .dropbtn {color: #31A6FF}
+  li:hover .dropdown-content {display: block;}
+
+
+  /* ------------------HEADER ENDS HERE------------------- */
+
+  .tile {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    color: #555;
+    font-weight: 600;
+    margin: 0 0 50px;
+    background-color: #ffffff;
+  }
+  .top-head1 {
+    margin-top: 30px;
+    text-align: center;
+    color: #000;
+    font-size: 32px;
+    padding: 1.04vw;
+  }
+
+  .top-head2 {
+    font-weight: normal;
+    width: 400px;
+    font-size: 24px;
+    text-align: center;
+    margin-top:0px;
+    margin-bottom:20px;
+  }
+
+  .top-flexwrap{
+    display: flex;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff00;
+  }
+
+  .top-flexcol {
+    width: 50%;
+    padding: 10px;
+    display:flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .para1 {
+    width: 50%;
+    margin-left: 7%;
+  }
+  .video {
+    margin: 0 7%;
+    width: 50%;
+  }
+  .video iframe {
+    width: 100%;
+    height: 21.354vw;
+  }
+  .note {
+    text-align: center;
+  }
+
+  /* SLIDESHOW (comes from w3schools.com) */
+  .slideshow-container{
+    grid-column: 2;
+  }
+
+  .mySlides {
+    display:none;
+  }
+
+  .mySlides img{
+    max-width: 800px;
+  }
+
+  .prev, .next {
+    cursor: pointer;
+    /* position: absolute;
+    top: 50%; */
+    width: auto;
+    /* margin-top: -22px; */
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 3px;
+    user-select: none;
+  }
+
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+
+  .caption {
+    color: gray;
+    font-size: 15px;
+    /* padding: 8px 12px;
+    position: absolute;
+    bottom: 8px; */
+    width: 100%;
+    text-align: center;
+  }
+
+  .slides-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff00;
+
+  }
+
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+
+  @keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+
+  .card {
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    align-items:center;
+  }
+
+  .card-container {
+    padding: 2px 16px;
+  }
+
+  /* Add rounded corners to the top left and the top right corner of the image */
+  .card img {
+    border-radius: 5px;
+    width: 100%;
+    object-fit: contain;
+  }
+  
+  .card p{
+    font-size: 14px;
+  }
+
+  .card a{
+    text-decoration: none;
+    color: black;
+  }
+
+  .flexwrap {
+    display: flex;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff00;
+
+  }
+
+  .flexwrap a{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    background-color: white;
+    display: flex;
+    width: 40%;
+    height: 100%;
+    padding: 20px;
+    margin: 20px;
+    text-decoration: none;
+    color:black;
+  }
+  .flexwrap a:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+
+  .flexcol {
+    color: #484848;
+    border: 3px;
+    border-style: solid;
+    border-color: #000;
+    padding: 10px;
+    width: 50%;
+    background: #b2e3f4;
+    /* height: 14.97vw; */
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+  .head2 {
+    font-size: 20px;
+    color: black;
+    /* text-decoration: underline; */
+    text-align: center;
+  }
+  .container2 {
+    /* height: 25vw; */
+    position: relative;
+    background-color: #b2e3f4;
+    text-align: center;
+    align-content: center;
+    padding: 30px;
+  }
+
+  .button {
+    margin: 0;
+    text-decoration: none;
+    color: black;
+    font-family: 'Arial', sans-serif;
+    font-weight: 200;
+    font-size: 16px;
+    text-align: center;
+    background-color: #fff;
+
+    border: solid 2px black;
+    border-radius: 50px;
+    padding: 0.651vw 5.208vw;
+
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+  }
+
+  .button-container {
+    display:flex;
+    justify-content: center;
+  }
+  .button:hover {
+    background-color: #31a6ff;
+    color: #fff;
+  }
+
+  .footer {
+  margin: 0;
+  padding: 10px 0 10px 0;
+  list-style:none;
+  text-decoration: none;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #262626;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: 'Arial', sans-serif;
+  }
+
+  @media all and (max-width: 700px) {
+    .footer {
+      flex-direction: column;
+    }
+    .flexwrap {
+      flex-direction: column;
+    }
+
+    .top-flexwrap {
+      flex-direction: column;
+    }
+    
+    .card{
+      display:flex;
+      flex-direction: column;
+    }
+    .flexwrap a{
+      width: 80%;
+    }
+    .flexcol {
+      width: 100%;
+    }
+    .top-flexcol {
+      width: 100%;
+    }
+  }
+  </style>
+  </head>
+
+  <body>
+    <header>
+      <div><a href="/app"><img src="{{url_for('static', filename='Logo2.JPG')}}" alt="logo" class="logo"></a></div>
+      <nav>
+          <li><a href="/app" class="header-text">HOME</a></li>
+          <li><div class="dropdown">
+              <button class="dropbtn">MODULES</button>
+              <div class="dropdown-content">
+                <a href="bayesian_optimization" class="header-text">Bayesian Optimization</a>
+                <a href="biodegradability_classification" class="header-text">Biodegradability Classification</a>
+                <a href="catalysis_data_interactive_visualization" class="header-text">Catalysis Data Science</a>
+                <a href="DLT" class="header-text">Digital Lab Twin</a>
+                <a href="DAC" class="header-text">Direct Air Captures</a>
+                <a href="sliders_reaction_kinetics" class="header-text">Reaction Kinetics</a>
+                <a href="SIR" class="header-text">SEIR Infectious Diseases</a>
+                <a href="ZECC" class="header-text">Zero Energy Cooling Chamber</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="about" class="header-text">ABOUT</a></li>
+      </nav>
+    </header>
+    <style>
+      .text-size {
+        font-size: 16px; /* Adjust the font size as desired */
+      }
+    </style>
+    <!--THIS IS THE OPENING PARAGRAPH/TITLE, DON'T USE THIS PARAGRAPH FOR FORMATTING-->
+
+    <div class="tile">
+      <h1 class="top-head1">Welcome to STEM Visualizations!</h1>
+      <div style="display:flex; justify-content: center;">
+        <h2 class="top-head2"> Introducing accessible, inquiry-based learning technologies into the college classroom.</h2>
+      </div>
+      <hr style="height:1px; width:150px; background-color: black;">
+      <div class="top-flexwrap" style="margin-top:70px;">
+        <div class="top-flexcol">
+          <p style="margin-top:0; width:80%;">
+            This site was designed to help students learn conceptually complex
+            STEM problems by giving them a more interactive way of engaging with
+            course material. <br /><br />
+            Our long-term vision is to create an open repository for a range of
+            visualization-based models: from interactive data visualization
+            (through plots) of system response to more advanced graphics-based
+            simulations of complex natural and engineered systems. Our models
+            cover a variety of different topics and subjects, hopefully you find
+            these to be useful! <br /><br />
+            - Mountaintop Summer Team
+          </p>
+        </div>
+
+        <div class="top-flexcol" style="flex-direction: column;">
+          <iframe
+            src="https://player.vimeo.com/video/447232810"
+            frameborder="0"
+            allow="autoplay; fullscreen"
+            style="height:300px;"
+          ></iframe>
+          <p class="note">
+            <a href="https://vimeo.com/447232810"
+              >STEM Learning Through Visualization Presentation</a
+            >
+            from <a href="https://vimeo.com/user121275255">Brian Lucas</a> on
+            <a href="https://vimeo.com">Vimeo</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--ENDING OF THE INTRODUCTION PARAGRAPH-->
+
+    <!--VIDEO DIVISION
+    
+    <div style="border:3px; border-style:solid; border-color:#000000; padding: 1em;">
+    
+    <iframe src="https://player.vimeo.com/video/447232810" width="640" height="328" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <p><a href="https://vimeo.com/447232810">STEM Learning Through Visualization Presentation</a> from <a href="https://vimeo.com/user121275255">Brian Lucas</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+        
+    </div>-->
+
+
+    <!-------MODULES------------------------------------------------------>
+
+    <div class="container2">
+      <h1 style="text-decoration: underline">Modules</h1>
+
+      <div class="container2">
+        <div class="slides-row">
+          <div style="grid-column: 1; display:flex; justify-content: right;"><a class="prev" onclick="plusSlides(-1)">&#10094;</a></div>
+          <div class="slideshow-container">
+
+            <div class="mySlides fade">
+              <a href="bayesian_optimization"><img src="{{url_for('static', filename='bayesian_optimization-ui.png')}}" alt="Biodegradability Classification" style="width:100%"></a>
+              <div class="caption">Biodegradability Classification: Build and test your own classification model.</div>
+            </div>
+
+            <div class="mySlides fade">
+              <a href="biodegradability_classification"><img src="{{url_for('static', filename='biodegrad-ui.png')}}" alt="Biodegradability Classification" style="width:100%"></a>
+              <div class="caption">Biodegradability Classification: Build and test your own classification model.</div>
+            </div>
+          
+            <div class="mySlides fade">
+              <a href="catalysis_data_interactive_visualization"><img src="{{url_for('static', filename='catalysis-ui.png')}}" alt="Catalysis" style="width:100%"></a>
+              <div class="caption">Catalysis and Data Science: Investigate a dataset with data science techniques.</div>
+            </div>
+          
+            <div class="mySlides fade">
+              <a href="DLT"><img src="{{url_for('static', filename='DLT-ui.png')}}" alt="Digital Lab Twin" style="width:100%"></a>
+              <div class="caption">Digital Lab Twin: Develop a neural network to predict the outputs of a photobioreactor.</div>
+            </div>
+
+            <div class="mySlides fade">
+              <a href="DAC"><img src="{{url_for('static', filename='DAC-ui.png')}}" alt="Direct Air Captures" style="width:100%"></a>
+              <div class="caption">Direct Air Captures: Optimize a direct air capture system to filter CO2 from the atmosphere.</div>
+            </div>
+
+            <div class="mySlides fade">
+              <a href="sliders_reaction_kinetics"><img src="{{url_for('static', filename='reaction-kinetics-ui.png')}}" alt="Reaction Kinetics" style="width:100%"></a>
+              <div class="caption">Reaction Kinetics: Follow the concentrations of reactants and products during a reaction.</div>
+            </div>
+
+            <div class="mySlides fade">
+              <a href="SIR"><img src="{{url_for('static', filename='SIR-ui.png')}}" alt="SEIR Infectious Diseases" style="width:100%"></a>
+              <div class="caption">SEIR Infectious Diseases: Investigate an infectious disease outbreak.</div>
+            </div>
+
+            <div class="mySlides fade">
+              <a href="ZECC"><img src="{{url_for('static', filename='ZECC-ui.png')}}" alt="Zero Energy Cooling Chamber" style="width:100%"></a>
+              <div class="caption">Zero Energy Cooling Chamber: Create a cooling chamber to preserve food in various climates.</div>
+            </div>
+
+          </div>
+          <div style="grid-column: 3; display:flex; justify-content: left;"><a class="next" onclick="plusSlides(1)">&#10095;</a></div>
+        </div>
+        <br>
+        
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>
+          <span class="dot" onclick="currentSlide(5)"></span>
+          <span class="dot" onclick="currentSlide(6)"></span>
+          <span class="dot" onclick="currentSlide(7)"></span>
+        </div>
+      </div>
+
+    <!--THESE ARE THE DIVISIONS THAT ENCLOSE THE MODELS; EACH DIVISION HAS A BORDER THAT ENCLOSES THE TITLE, PARAGRAPH, AND LINK-->
+    <!--each flexwrap is a row, and all modules are in alphabetical order-->
+
+    <div class="flexwrap">
+      <!--GITHUB REPO DIVISION-->
+      <a href="https://github.com/swamilikes2code/Python_based_Interactive_Scientific_Visualization">
+      <div class="card" style="grid-template-columns: 1fr;">
+          <div class="card-container">
+              <h2 class="head2">
+                Github Repository
+              </h2>
+            <p>
+              The Github repository containing all code and documentation related to
+              this project can be found here.
+            </p>
+          </div>
+      </div>
+      </a>
+    </div>
+
+    <div class="flexwrap">
+        <!--BAYESIAN OPTIMIZATION DIVISION-->
+        <a href="bayesian_optimization">
+          <div class="card">
+            <img src="{{url_for('static', filename='BO_Cycle.png')}}" alt="Bayesian Optimization">
+            <div class="card-container">
+                <h2 class="head2">Bayesian Optimization</h2>
+              <p>
+                Apply Bayesian optimization to enhance laboratory experiment efficiency 
+                by systematically optimizing a photobioreactor through varied parameters, 
+                acquisition functions, and sampling methods.
+              </p>
+              <!-- <p class="button-container">
+                <a href="biodegradability_classification" class="button"
+                >Biodegradability Classification Model</a>
+              </p> -->
+            </div>
+          </div>
+        </a>
+
+        <!--BIODEGRAD CLASSIFICATION DIVISION-->
+        <a href="biodegradability_classification">
+          <div class="card">
+            <img src="{{url_for('static', filename='biodegrad.png')}}" alt="Biodegradability Classification">
+            <div class="card-container">
+                <h2 class="head2">Biodegradability Classification</h2>
+              <p>
+                Experiment with a simple classification problem, building your own model
+                to predict the biodegradability of organic compounds. View the implementation
+                and impact of machine learning in chemical engineering contexts.
+              </p>
+              <!-- <p class="button-container">
+                <a href="biodegradability_classification" class="button"
+                >Biodegradability Classification Model</a>
+              </p> -->
+            </div>
+          </div>
+        </a>
+    </div>
+
+    <div class="flexwrap">
+      <!--Catalysis DIVISION-->
+      <a href="catalysis_data_interactive_visualization">
+        <div class="card">
+          <img src="{{url_for('static', filename='data_science.jpg')}}" alt="Catalysis">
+          <div class="card-container">
+              <h2 class="head2">Catalysis Data Science</h2>
+            <p>
+              Discover trends within a large dataset of catalysts through exploration. Use various
+              data science and machine learning methods, such as supervised and unsupervised learning,
+              to gain a deeper understanding of the data.
+            </p>
+            <!-- <p class="button-container">
+              <a href="catalysis_data_interactive_visualization" class="button">Catalysis Model</a>
+            </p> -->
+          </div>
+        </div>
+      </a>
+
+      <!--DLT DIVISION-->
+      <a href="DLT">
+        <div class="card">
+          <img src="{{url_for('static', filename='PBR_image.jpg')}}" alt="DLT">
+          <div class="card-container">
+              <h2 class="head2">Digital Lab Twin</h2>
+            <p>
+              Delve into using a neural network to predict the outputs of a photobioreactor (PBR).
+              Change the PBR's variables and the neural network's hyperparameters to create an
+              optimized PBR system  and an accurate evaluation.
+            </p>
+            <!-- <p class="button-container">
+              <a href="DLT" class="button">DLT Model</a></p> -->
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="flexwrap">
+      <!--DAC DIVISION-->
+      <a href="DAC">
+        <div class="card">
+          <img src="{{url_for('static', filename='DACPIC3.jpg')}}" alt="DAC">
+          <div class="card-container">
+              <h2 class="head2">Direct Air Captures</h2>
+            <p>
+              Develop a direct air capture (DAC) system, a climate solution that filters out carbon
+              dioxide from any point in ambient air. Modify the DAC's characteristics, observe its
+              performance, and optimize its configuration.
+            </p>
+            <!-- <p class="button-container">
+              <a href="DAC" class="button">DAC Model</a></p> -->
+          </div>
+        </div>
+      </a>
+
+      <!--REACTION KINETICS DIVISION-->
+      <a href="sliders_reaction_kinetics">
+        <div class="card">
+          <img src="{{url_for('static', filename='reaction_kinetics.png')}}" alt="Reaction Kinetics">
+          <div class="card-container">
+              <h2 class="head2">Reaction Kinetics</h2>
+            <p>
+              Explore reaction kinetics, the branch of chemistry concerned with the rate of
+              transformation of reactant into product. Observe the progression of a reaction
+              through customizable inputs and dynamic output displays.
+            </p>
+            <!-- <p class="button-container">
+              <a href="sliders_reaction_kinetics" class="button">Reaction Kinetics Model</a>
+            </p> -->
+          </div>
+        </div>
+      </a>      
+    </div>
+
+    <div class="flexwrap">
+      <!--SIR DIVISION-->
+      <a href="SIR">
+        <div class="card">
+          <img src="{{url_for('static', filename='virus.jpg')}}" alt="SEIR">
+          <div class="card-container">
+              <h2 class="head2">SEIR Infectious Diseases</h2>
+            <p>
+              Follow the spread of infectious diseases through interactive visualizations of the
+              Susceptible-Exposed-Infected-Recovered (SEIR) model. Adjust the characteristics
+              of the outbreak to see the influence on infection.
+            </p>
+            <!-- <p class="button-container">
+              <a href="SIR" class="button">SIR Model</a></p> -->
+          </div>
+        </div>
+      </a>
+
+      <!--ZECC DIVISION-->
+      <a href="ZECC">
+        <div class="card">
+          <img src="{{url_for('static', filename='ZECC_1.png')}}" alt="ZECC">
+          <div class="card-container">
+              <h2 class="head2">Zero Energy Cooling Chamber</h2>
+            <p>
+              Optimize a zero energy cool chamber (ZECC), a storage solution intended to preserve
+              food in arid climates using passive evaporation. Evaluate the chamber's performance in
+              different locations using the visualizations.
+            </p>
+              <!-- <p class="button-container">
+              <a href="ZECC" class="button">ZECC Model</a></p> -->
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    </div>
+
+
+    <script>
+      let slideIndex = 1;
+      showSlides(slideIndex);
+      
+      // Next/previous controls
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+      
+      // Thumbnail image controls
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+      
+      function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+      }
+    </script>
+  <style>
+    /* floating round button */
+    #clutchChatIcon{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      /* REMOVED background-image here, it's now handled by <img> tag inside */
+      background-color: transparent; /* Ensure no default background interferes */
+      cursor:pointer;
+      z-index:1000; /* Ensure it's above most page content */
+      box-shadow:0 4px 12px rgba(0,0,0,.3);
+      overflow: hidden; /* Hide parts of image that exceed round shape */
+      display: flex; /* Use flexbox to center image inside */
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+    }
+  
+    /* Style for the actual image inside the button */
+    #clutchChatIcon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensure image covers the button area */
+    }
+  
+    /* hidden iframe */
+    #clutchIframe{
+      display:none; /* Initially hidden, toggled by JS */
+      position:fixed;
+      bottom:90px; /* Positions the iframe above the icon when expanded */
+      right:20px;
+      width:350px; /* Standard chat window width */
+      height:500px; /* Standard chat window height */
+      border:none;
+      border-radius:12px;
+      box-shadow:0 0 15px rgba(0,0,0,.25);
+      z-index:1001; /* Ensure the iframe is above the icon */
+    }
+  
+    /* Optional: Basic responsive adjustments for smaller screens */
+    @media (max-width: 600px) {
+      #clutchChatIcon {
+        bottom: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+      }
+      #clutchIframe {
+        width: 90%;
+        height: 70%;
+        bottom: 70px;
+        right: 5%; /* Centers it horizontally */
+        left: 5%; /* Centers it horizontally */
+        margin: auto; /* Ensures centering */
+      }
+    }
+  </style>
+  
+  <div id="clutchChatIcon" onclick="toggleClutchChat()">
+    <img src="{{ url_for('static', filename='clutch-logo.jpeg') }}" alt="Clutch AI Chat"> </div>
+  
+  <iframe id="clutchIframe"
+          title="Clutch AI Chat"
+          src="https://omar852-clutch-ai-chat.hf.space"
+          allow="microphone">
+  </iframe>
+  
+  <script>
+    function toggleClutchChat(){
+      const frame = document.getElementById("clutchIframe");
+      if (frame.style.display === "none" || frame.style.display === "") {
+        frame.style.display = "block";
+      } else {
+        frame.style.display = "none";
+      }
+    }
+  </script>
+
+  </body>
+
+  <div class="footer">
+    <a href="https://cache.org/"><img src="{{url_for('static', filename='cache_logo.png')}}" alt="cache" class="sq-logo";></a>
+    <a href="https://www.nsf.gov/"><img src="{{url_for('static', filename='nsf_logo.png')}}" alt="nsf" class="sq-logo";></a>
+    <a href="/app"><img src="{{url_for('static', filename='Logo2.JPG')}}" alt="logo" class="logo";></a>
+    <a href="https://engineering.lehigh.edu/chbe"><img src="{{url_for('static', filename='chbe_logo.png')}}" alt="chbe" class="sq-logo";></a>
+    <a href="https://creativeinquiry.lehigh.edu/"><img src="{{url_for('static', filename='creative_inquiry_logo.png')}}" alt="ci" class="sq-logo";></a>
+  </div>
+  <!---------------------------------------------------------------------------------->
+</html>
